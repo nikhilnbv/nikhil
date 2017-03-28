@@ -15,15 +15,16 @@ import { routes } from './services/app.router';
 export class LoginComponent {
     model: any = {};
     private subject = new Subject<any>();
-     private router: Router;
-    constructor(private loginService : LoginService ) {
+    //private router: Router;
+    constructor(private loginService : LoginService, private router: Router ) {
         
     }
 
-    login() {
+    login() { 
+        
         console.log('calling');
         if(this.loginService.login(this.model.username, this.model.password)){
-            this.router.navigate(["admin"]);
+            this.router.navigate(['/admin']);
             //this.router.navigate(['./app.admin.component']);
             //this.alertService.error(error);
             //console.log('yes');
