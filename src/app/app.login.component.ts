@@ -5,8 +5,9 @@ import { Router } from '@angular/router';
 import { AdminComponent } from './app.admin.component';
 import { routes } from './services/app.router';
 
+
 @Component({
-    selector:'app-login',
+    //selector:'app-login',
     templateUrl:'html/login.html',
     styleUrls: ['styles/bootstrap-theme.min.css','styles/bootstrap.min.css','styles/login.css'],
     providers:[LoginService]

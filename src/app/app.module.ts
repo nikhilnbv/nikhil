@@ -11,7 +11,7 @@ import { TrainerComponent } from './app.trainer.component';
 import { TraineeComponent } from './app.trainee.component';
 import { LoginService } from './services/loginService';
 import { routing }        from './services/app.router';
-
+import { AuthGuard } from './guard/authGuard';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { routing }        from './services/app.router';
     HttpModule, 
     routing
   ],
-  providers: [LoginService],
+  providers: [LoginService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

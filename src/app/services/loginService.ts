@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+
 @Injectable()
 export class LoginService {
     constructor() { }
 
-        login= function (username: string, password: string) : boolean {
+        login = function (username: string, password: string) : boolean {
             if (username == "admin" && password == "123456") {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', username);
