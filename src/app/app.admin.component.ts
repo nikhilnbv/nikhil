@@ -3,10 +3,13 @@ import { LoginService } from './services/loginService';
 import { Router } from '@angular/router';
 import { routes } from './services/app.router';
 import {ElementRef,Renderer2} from '@angular/core';
-//import './scripts/jquery-3.2.0.min.js';
-//import './scripts/bootstrap.min.js';
 
-//import './scripts/ui.core.js';
+import { OnInit } from '@angular/core';
+
+//import './scripts/bootstrap-3.3.7.min.js';
+//import './scripts/jquery-3.2.0.min.js';
+
+
 
 @Component({
     selector:'app-admin',
@@ -14,8 +17,6 @@ import {ElementRef,Renderer2} from '@angular/core';
                 <!doctype html>
                 <html>
                     <head>
-                        <link href="bootstrap.min.css">
-                        <link href="bootstrap-theme.min.css">
                         <style>
                             .app-header{
                                 width:99.9%;
@@ -79,24 +80,8 @@ import {ElementRef,Renderer2} from '@angular/core';
                                 border-color: lightgrey;
                             }
                         </style>
-                        
-                        <script type="text/javscript">
-                            function loadFunction(){
-                                console.log('hi..........................');
-                                $('.dropdown-toggle').dropdown();
-                            };
-
-                            <!-- for desabling back button -->
-                            function preventBack()
-                            {
-                                window.history.forward();
-                            };
-                            setTimeout("preventBack()",0);
-                            window.onunload=function() {null};                           
-                        </script>
                     </head>
-                    <body (load)="loadFunction()">
-                        
+                    <body>
 
                         <section class="app-hero">
                             <img class="hero-logo" src="src/app/img/Logo_Cybage_5.png" />
@@ -107,12 +92,12 @@ import {ElementRef,Renderer2} from '@angular/core';
                             <div class="header-welcome-text">Welcome Admin</div>
                             <div class="header-menu">
                                 <div class="dropdown">
-                                    <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="" href="">
+                                    <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#">
                                         Dropdown
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#" >Logout</a></li>
+                                        <li><a>Logout</a></li>
                                     </ul>
                                 </div>
                                 <button type="submit" (click)="logout()" >Logout</button>
@@ -121,13 +106,27 @@ import {ElementRef,Renderer2} from '@angular/core';
 
                         <nav>
                             <div class="nav-links">
-                                <span class="span-links"><button type="button" (click)="manageUserScreen()">Manage User</button></span><br>
-                                <span class="span-links"><a href="" >Manage Training</a></span>
+                                <span class="span-links"><a (click)="manageUserScreen()">Manage User</a></span><br>
+                                <span class="span-links"><a (click)="manageUserScreen()">Manage Training</a></span>
                             </div>
                             <div class="nav-content">
                                 <div id="main-content"></div>
                             </div>
                         </nav>
+                        
+
+                        <script type="text/javscript">
+
+                            <!-- for desabling back button -->
+                            function preventBack()
+                            {
+                                window.history.forward();
+                            }
+                            setTimeout("preventBack()",0);
+                            window.onunload=function() {null};                           
+                        </script>
+
+
                     </body>
                 </html>
 
@@ -135,10 +134,10 @@ import {ElementRef,Renderer2} from '@angular/core';
 
     `,
     providers:[LoginService],
-    styleUrls: ['styles/bootstrap-theme.min.css','styles/bootstrap.min.css']
+    styleUrls: ['styles/bootstrap-theme.min.css','styles/bootstrap-3.3.7.css']
 })
 
-export class AdminComponent {
+export class AdminComponent implements OnInit{
 
     constructor(private loginService : LoginService,private router: Router,private _elementRef : ElementRef) {
         
@@ -146,31 +145,26 @@ export class AdminComponent {
 
     manageUserScreen(){
         this._elementRef.nativeElement.querySelector('.nav-content').innerHTML = 
-        '<div class="accordion" id="accordion2">'+
-            '<div class="accordion-group">'+
-                '<div class="accordion-heading">'+
-                '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">'+
-                    'Collapsible Group Item 1</a>'+
+        '<div class="container" style="width:100%;padding-top:15px;">'+
+            '<div class="panel-group">'+
+                '<div class="panel panel-default">'+
+                '<div class="panel-heading">'+
+                    '<h4 class="panel-title">'+
+                    '<a data-toggle="collapse" href="#collapse1">Collapsible panel</a>'+
+                    '</h4>'+
                 '</div>'+
-                '<div id="collapseOne" class="accordion-body collapse in">'+
-                '<div class="accordion-inner">'+
-                    'Anim pariatur cliche...'+
-                '</div>'+
-                '</div>'+
-            '</div>'+
-            '<div class="accordion-group">'+
-                '<div class="accordion-heading">'+
-                '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">'+
-                    'Collapsible Group Item 2'+
-                '</a>'+
-                '</div>'+
-                '<div id="collapseTwo" class="accordion-body collapse">'+
-                '<div class="accordion-inner">'+
-                    'Anim pariatur cliche...'+
+                '<div id="collapse1" class="panel-collapse collapse">'+
+                    '<div class="panel-body">Panel Body</div>'+
+                    '<div class="panel-footer">Panel Footer</div>'+
                 '</div>'+
                 '</div>'+
             '</div>'+
         '</div>';
+    }
+
+    ngOnInit(){
+        console.log('onInit event called..');
+        this._elementRef.nativeElement.querySelector('.dropdown-toggle').dropdown();
     }
 
     logout() { 
