@@ -1,0 +1,61 @@
+.app-header{
+    width:99.9%;
+    height:50px;
+    background-color: rgb(45, 62, 80);
+    border: 1px;
+    border-style: solid;
+    border-color: lightgrey;
+}
+.header-welcome-text{
+    float: left;
+    padding: 1%;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+.header-menu{
+    float: right;
+}
+.app-hero{
+    width:99.9%;
+    height:100px;
+    background-color:rgb(220, 233, 233);
+    border: 1px;
+    border-style: solid;
+    border-color: lightgrey;
+    border-bottom: 0px;
+}
+.hero-logo{
+    float: left;
+    width:25%;
+}
+.hero-text{
+    width:65%;
+    text-align: right;
+    float: left;
+    margin: 25px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight:bold;
+    font-size: 35px;
+    color: rgb(0, 149, 200);
+}
+.nav-links{
+    width:24.6%;
+    float: left;
+    height: 200px;
+    background-color:rgb(220, 233, 180);
+    border: 1px;
+    border-style: solid;
+    border-color: lightgrey;
+}
+.nav-content{
+    width:75.1%;
+    float: left;
+    height: 600px;
+    background-color:rgb(220, 233, 233);
+    border: 1px;
+    border-left: 0px;
+    border-style: solid;
+    border-color: lightgrey;
+}
