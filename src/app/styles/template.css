@@ -52,10 +52,32 @@
 .nav-content{
     width:75.1%;
     float: left;
-    height: 600px;
+    height: auto;
+    min-height: 600px;
     background-color:rgb(220, 233, 233);
     border: 1px;
     border-left: 0px;
     border-style: solid;
     border-color: lightgrey;
+}
+
+fieldset {
+    border: thin solid #ccc; 
+    border-radius: 4px;
+    padding: 20px;
+    padding-left: 40px;
+    background: #fbfbfb;
+}
+legend {
+   color: #678;
+}
+.form-control {
+    width: 95%;
+}
+label small {
+    color: #678 !important;
+}
+span.req {
+    color:maroon;
+    font-size: 112%;
 }

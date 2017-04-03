@@ -24,7 +24,7 @@
 <nav>
     <div class="nav-links">
         <span class="span-links"><a (click)="manageUserScreen()">Manage User</a></span><br>
-        <span class="span-links"><a (click)="manageUserScreen()">Manage Training</a></span>
+        <span class="span-links"><a (click)="manageTraining()">Manage Training</a></span>
     </div>
     <div class="nav-content">
         <div id="main-content"></div>
@@ -32,9 +32,14 @@
 </nav>
 
 
-<script type="text/javscript">
+<script>
 
-    <!-- for desabling back button -->
+
+    
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+  
     function preventBack()
     {
         window.history.forward();
