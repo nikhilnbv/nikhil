@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from './services/loginService';
 import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
-import { AdminComponent } from './app.admin.component';
+import { AdminComponent } from './admin/app.admin.component';
 import { routes } from './services/app.router';
 
 
