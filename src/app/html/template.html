@@ -27,7 +27,9 @@
         <span class="span-links"><a (click)="manageTraining()">Manage Training</a></span>
     </div>
     <div class="nav-content">
-        <div id="main-content"></div>
+        <div id="main-content">
+            <dynamic-component [componentData]="componentData"></dynamic-component>
+        </div>
     </div>
 </nav>
 
