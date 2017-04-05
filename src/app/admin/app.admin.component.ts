@@ -2,72 +2,49 @@ import { Component } from '@angular/core';
 import { LoginService } from '../services/loginService';
 import { Router } from '@angular/router';
 import { routes } from '../services/app.router';
-import {ElementRef,Renderer2} from '@angular/core';
+import { ElementRef, Renderer, Input, ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver} from '@angular/core';
 import { CreateUserComponent } from './createuser.component';
 import { UserDetailComponent } from './userdetail.component';
+import { CreateTrainingComponent } from './createTraining.component';
+import  DynamicComponent  from '../app.dynamic.component';
 import { OnInit } from '@angular/core';
+//import {BrowserModule} from '@angular/platform-browser'
 
 @Component({
     selector:'app-admin',
     templateUrl:'../html/template.html',
+    // Reference to the components must be here in order to dynamically create them
+    entryComponents: [CreateUserComponent, CreateTrainingComponent], 
     providers:[LoginService],
     styleUrls:['../styles/template.css']
 })
 
 export class AdminComponent implements OnInit{
 
-    constructor(private loginService : LoginService,private router: Router,private _elementRef : ElementRef) {
+    componentData = null;
+
+    constructor(private loginService : LoginService,private router: Router,private _elementRef : ElementRef,
+    private resolver: ComponentFactoryResolver) {
         
     }
 
     manageUserScreen(){
-        this._elementRef.nativeElement.querySelector('.nav-content').innerHTML = 
-        `
-
-        <create-user-form></create-user-form>
-
-        <existing-user-list></existing-user-list>
-                    
-        `;
+        this.componentData = {
+            component: CreateUserComponent,
+             inputs: {
+                showNum: 9
+            }        
+        };
     }
 
     manageTraining(){
-        this._elementRef.nativeElement.querySelector('.nav-content').innerHTML = 
-        `<div class="container" style="width:100%;padding-top:15px;">
-            <div class="panel-group">
-                <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                    <a data-toggle="collapse" data-target="#collapse1">Schedule Training</a>
-                    </h4>
-                </div>
-                <div id="collapse1" class="panel-collapse collapse">
-                    <div class="panel-body">
-
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container" style="width:100%;">
-            <div class="panel-group">
-                <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#collapse2">Training Details</a>
-                    </h4>
-                </div>
-                <div id="collapse2" class="panel-collapse collapse">
-                    <div class="panel-body">
-
-                        <existing-user-list></existing-user-list>
-                    
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>`;
+       // this._elementRef.nativeElement.querySelector('.nav-content').innerHTML = 
+       this.componentData = {
+            component: CreateTrainingComponent,
+             inputs: {
+                showNum: 9
+            }        
+        };
     }
 
     ngOnInit(){
