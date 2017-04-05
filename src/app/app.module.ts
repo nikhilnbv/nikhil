@@ -9,6 +9,8 @@ import { LoginComponent } from './app.login.component';
 import { AdminComponent } from './admin/app.admin.component';
 import { CreateUserComponent } from './admin/createuser.component';
 import { UserDetailComponent } from './admin/userdetail.component';
+import  DynamicComponent  from './app.dynamic.component';
+import { CreateTrainingComponent } from './admin/createTraining.component';
 
 import { TrainerComponent } from './trainer/app.trainer.component';
 import { TraineeComponent } from './trainee/app.trainee.component';
@@ -18,9 +20,10 @@ import { AuthGuard } from './guard/authGuard';
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, AdminComponent, CreateUserComponent, UserDetailComponent,
-     TrainerComponent, TraineeComponent
+    AppComponent, LoginComponent, AdminComponent, CreateUserComponent, UserDetailComponent,DynamicComponent,
+     TrainerComponent, TraineeComponent, CreateTrainingComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
