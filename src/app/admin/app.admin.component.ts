@@ -8,7 +8,6 @@ import { UserDetailComponent } from './userdetail.component';
 import { CreateTrainingComponent } from './createTraining.component';
 import  DynamicComponent  from '../app.dynamic.component';
 import { OnInit } from '@angular/core';
-//import {BrowserModule} from '@angular/platform-browser'
 
 @Component({
     selector:'app-admin',
@@ -50,10 +49,6 @@ export class AdminComponent implements OnInit{
     ngOnInit(){
         console.log('onInit event called..');
         //this._elementRef.nativeElement.querySelector('.dropdown-toggle').dropdown();
-    }
-
-    callMe(){
-        console.log('btn clicked');
     }
 
     logout() { 
