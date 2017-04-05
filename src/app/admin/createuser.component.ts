@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 
 @Component({
     selector: 'create-user-form',
@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 
 export class CreateUserComponent{
 
+    showNum = 0;
+
+  constructor(private injector: Injector) {
+    this.showNum = this.injector.get('showNum');
+  }
 }
