@@ -15,6 +15,7 @@ import { routes } from './services/app.router';
 
 export class LoginComponent {
     model: any = {};
+    
     private subject = new Subject<any>();
     //private router: Router;
     constructor(private loginService : LoginService, private router: Router ) {
@@ -25,14 +26,14 @@ export class LoginComponent {
         
         console.log('calling');
         if(this.loginService.login(this.model.username, this.model.password)){
-            this.router.navigate(['/admin']);
-            //this.router.navigate(['./app.admin.component']);
-            //this.alertService.error(error);
-            //console.log('yes');
-            //this.subject.next({ type: 'success', text: "Authenticated.." });
+            if(this.model.username=="admin")                
+                this.router.navigate(['/admin']);
+            else if(this.model.username=="trainer")
+                this.router.navigate(['/trainer']);
+            else if(this.model.username=="trainee")
+                this.router.navigate(['/trainee']);
         }
         else {
-            //this.alertService.error(error);
             console.log('No ');
             this.subject.next({ type: 'error', text: "Naa ho pavega.." });
         }
