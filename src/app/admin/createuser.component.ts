@@ -12,4 +12,9 @@ export class CreateUserComponent{
   constructor(private injector: Injector) {
     this.showNum = this.injector.get('showNum');
   }
+  
+  validateUserDetails(){
+    console.log("Validate form..");  
+  }
+
 }
