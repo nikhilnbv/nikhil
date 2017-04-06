@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { LoginService } from '../services/loginService';
 import { Router } from '@angular/router';
 import { routes } from '../services/app.router';
-import { ElementRef, Renderer, Input, ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver} from '@angular/core';
 import { CreateUserComponent } from './createuser.component';
 import { UserDetailComponent } from './userdetail.component';
 import { CreateTrainingComponent } from './createTraining.component';
 import  DynamicComponent  from '../app.dynamic.component';
-import { OnInit } from '@angular/core';
+
 
 @Component({
     selector:'app-admin',
@@ -20,11 +19,10 @@ import { OnInit } from '@angular/core';
 
 export class AdminComponent implements OnInit{
 
+    
     componentData = null;
 
-    constructor(private loginService : LoginService,private router: Router,private _elementRef : ElementRef,
-    private resolver: ComponentFactoryResolver) {
-        
+    constructor(private loginService : LoginService,private router: Router,private _elementRef : ElementRef) {
     }
 
     manageUserScreen(){
@@ -47,12 +45,17 @@ export class AdminComponent implements OnInit{
     }
 
     ngOnInit(){
-        console.log('onInit event called..');
-        //this._elementRef.nativeElement.querySelector('.dropdown-toggle').dropdown();
+        //console.log('onInit event called..');
+        if(localStorage.getItem('userRole').toString() == "admin")
+        {
+            this._elementRef.nativeElement.querySelector('#adminLinks').hidden = false;
+            this._elementRef.nativeElement.querySelector('#trainerLinks').hidden = true;
+            this._elementRef.nativeElement.querySelector('#traineeLinks').hidden = true;
+        }
     }
 
     logout() { 
-        console.log('calling logout');
+        //console.log('calling logout');
         this.loginService.logout();
         this.router.navigate(['/login']);
     }
