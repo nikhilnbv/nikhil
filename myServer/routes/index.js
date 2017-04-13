@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/authenticate', function(req, res, next) {
+router.get('/authenticate1', function(req, res, next) {
   //res.render('index', { title: 'Express' });
   // var uname = document.getElementById('txtUserName').value;
   // var pass = document.getElementById('txtPassword').value;

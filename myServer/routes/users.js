@@ -24,22 +24,20 @@ router.get('/', function(req, res, next) {
 
 
 
-router.get('/authenticate1',function(req, res, next){
+router.post('/authenticate',function(req, res, next){
     console.log("inside authenticate");
 
-    connection.query('select * from users where username = "'+ "Nikhil" +'"'
+    connection.query('select * from users where username = "'+ req.param('username') +'" and password = "' + req.param('password') + '" and isactive = true'
     ,function(err,result){
         if(err) { 
             console.log(err);
         }
         else{
-            console.log(result[0].firstname + ' records present..');
-            res.send(result);
-            /*if(result[0].count>0){
-                console.log("true efdfdfdf");
-            }else{
-                console.log("false sdfsfsfsf");
-            }*/
+            if(result.length > 0)
+                 res.send(result);            
+            else                
+                 res.send([{'firstname' : 'No user found'}]);
+            
         }
     });
 });

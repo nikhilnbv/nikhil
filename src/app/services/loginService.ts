@@ -33,10 +33,8 @@ export class LoginService {
 
     }
 
-    authenticate(){
-       // return this.http.get('http://localhost:3000/authenticate')
-         //       .map((resp: Response) => resp.json());
-         return this.http.get('http://localhost:3000/users/authenticate1')
+    authenticate(credential : any){
+        return this.http.post('http://localhost:3000/users/authenticate', credential)
                 .map((resp: Response) => resp.json());
     }
 

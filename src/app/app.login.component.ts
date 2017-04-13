@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit{
     authenticateRole : any;
     authenticateName : any;
     authenticateUserName: any;
-    
+    credentials : any;
     private subject = new Subject<any>();
     //private router: Router;
     constructor(private loginService : LoginService, private router: Router ) {
@@ -29,14 +29,27 @@ export class LoginComponent implements OnInit{
     login() { 
         
         console.log('calling');
+        this.credentials = {
+                'username' : this.model.username,
+                'password' : this.model.password                
+            }
 
-        this.loginService.authenticate().subscribe(
-			data => { console.log(data);
-                this.authenticateFlag = data[0].isactive;
-                this.authenticateRole = data[0].role;
-                this.authenticateName = data[0].firstname;
-                this.authenticateUserName = data[0].username;
-                this.onSuccess();},
+        this.loginService.authenticate(this.credentials).subscribe(
+			data => { console.log("hahaha" + data);
+                if(data[0].firstname != "No user found")
+                {
+                    this.authenticateFlag = data[0].isactive;
+                    this.authenticateRole = data[0].role;
+                    this.authenticateName = data[0].firstname;
+                    this.authenticateUserName = data[0].username;
+                    this.onSuccess();
+                }
+                else
+                {
+                    this.onFailure();  
+                }
+            },
+                    
 			err => console.error(err),
 			() => console.log('success..')
 		);
@@ -78,6 +91,10 @@ export class LoginComponent implements OnInit{
         }*/
     }
 
+    onFailure(){
+        console.log('No user found');
+    }
+    
     ngOnInit(){
         
     }
