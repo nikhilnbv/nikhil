@@ -9,7 +9,88 @@
         <div id="createUserCollapse" class="panel-collapse collapse">
             <div class="panel-body">
 
-                <form action="" method="post" id="fileForm" role="form">
+                
+                
+
+                    <form class="well form-horizontal" data-toggle="validator" role="form" method="post"  id="contact_form">
+                        <fieldset>
+                        <legend>User Registration</legend>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">First Name</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input required name="first_name" placeholder="First Name" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >Last Name</label> 
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input required name="last_name" placeholder="Last Name" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">User Name</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input required name="email" placeholder="User Name" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+                            
+                        <div class="form-group">
+                        <label class="col-md-3 control-label">Password</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    <input name="phone" placeholder="Password" class="form-control" type="password">
+                                </div>
+                        </div>
+                        </div>
+                            
+                        <div class="form-group">
+                        <label class="col-md-3 control-label">Confirm Password</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input name="address" placeholder="Confirm Password" class="form-control" type="password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                        <label class="col-md-3 control-label">Role</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input name="city" placeholder="city" class="form-control"  type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-info" >Create User <span class="glyphicon glyphicon-send"></span></button>
+                            </div>
+                        </div>
+
+                        </fieldset>
+                        </form>
+                        
+                
+                
+                
+                <!--<form action="" method="post" id="fileForm" role="form">
                 <fieldset><legend class="text-center">Valid information is required to register. <span class="req"><small> required *</small></span></legend>
 
                 <div class="form-group"> 	 
@@ -22,7 +103,7 @@
                     <label for="lastname"><span class="req">* </span> Last name: </label> 
                     <input class="form-control" type="text" name="lastname" id="txtLastName" placeholder="Last Name" required />  
                     <div id="errLast"></div>
-                </div>
+                </div> 
 
                 <div class="form-group">
                     <label for="username"><span class="req">* </span> User name:  <small>This will be your login user name</small> </label> 
@@ -56,7 +137,7 @@
                 </div>
 
                 </fieldset>
-                </form>
+                </form>-->
 
                 </div>
             </div>

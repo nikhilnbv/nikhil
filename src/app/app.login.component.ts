@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from './services/loginService';
 import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
@@ -13,9 +13,11 @@ import { routes } from './services/app.router';
     providers:[LoginService]
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit{
     model: any = {};
-    
+    authenticateFlag : any = {};
+    authenticateRole : any = {};
+    abc : any;
     private subject = new Subject<any>();
     //private router: Router;
     constructor(private loginService : LoginService, private router: Router ) {
@@ -25,7 +27,35 @@ export class LoginComponent {
     login() { 
         
         console.log('calling');
-        if(this.loginService.login(this.model.username, this.model.password)){
+
+        this.loginService.authenticate().subscribe(
+			data => { console.log(data);
+                this.authenticateFlag = data[0].isactive;
+                this.authenticateRole = data[0].role;
+                this.onSuccess();},
+			err => console.error(err),
+			() => console.log('success..')
+		);
+
+    }
+
+    onSuccess() {        
+        console.log("sasasasas" + this.authenticateFlag);
+        if(this.authenticateFlag){
+            console.log("sasasasas" + this.authenticateRole);
+            if(this.authenticateRole=="admin")                
+                this.router.navigate(['/admin']);
+            else if(this.authenticateRole=="trainer")
+                this.router.navigate(['/trainer']);
+            else if(this.authenticateRole=="trainee")
+                this.router.navigate(['/trainee']);
+        }
+        else {
+            console.log('No ');
+            this.subject.next({ type: 'error', text: "Naa ho pavega.." });
+        }
+              
+       /* if(this.loginService.login(this.model.username, this.model.password)){
             if(this.model.username=="admin")                
                 this.router.navigate(['/admin']);
             else if(this.model.username=="trainer")
@@ -36,6 +66,10 @@ export class LoginComponent {
         else {
             console.log('No ');
             this.subject.next({ type: 'error', text: "Naa ho pavega.." });
-        }
+        }*/
+    }
+
+    ngOnInit(){
+        
     }
 }

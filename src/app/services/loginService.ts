@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-
+import { Http, Headers, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
+//import {users} from  'D://Project-Angular/nikhil/myServer/models/loginModel.js';
 
 @Injectable()
 export class LoginService {
     
-    constructor() { }
+    constructor(private http: Http) { }
 
-        login = function (username: string, password: string) : boolean {
-            if (username == "admin" && password == "123456") {
+        login = function (username: string, password: string) : any {
+            /*if (username == "admin" && password == "123456") {
                 localStorage.setItem('currentUser', username);               
                 localStorage.setItem('userRole', 'admin');               
                 return true;
@@ -23,7 +25,19 @@ export class LoginService {
                 localStorage.setItem('userRole', 'trainee');               
                 return true;
             }
-            return false;
+            return false;*/
+            console.log("in  login");
+            
+            //return this.http.get('http://localhost:3000/authenticate/')
+              //  .map((resp: Response) => resp.json());
+
+    }
+
+    authenticate(){
+       // return this.http.get('http://localhost:3000/authenticate')
+         //       .map((resp: Response) => resp.json());
+         return this.http.get('http://localhost:3000/users/authenticate1')
+                .map((resp: Response) => resp.json());
     }
 
     logout() {
