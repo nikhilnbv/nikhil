@@ -9,10 +9,7 @@
         <div id="createUserCollapse" class="panel-collapse collapse">
             <div class="panel-body">
 
-                
-                
-
-                    <form class="well form-horizontal" data-toggle="validator" role="form" method="post"  id="contact_form">
+                    <form class="well form-horizontal" (ngSubmit)="createUser()" data-toggle="validator" role="form" method="post"  id="contact_form" novalidate>
                         <fieldset>
                         <legend>User Registration</legend>
 
@@ -21,7 +18,7 @@
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input required name="first_name" placeholder="First Name" class="form-control" type="text">
+                                    <input required name="firstName" [(ngModel)]="model.firstName" placeholder="First Name" class="form-control" type="text">
                                 </div>
                             </div>
                         </div>
@@ -31,7 +28,7 @@
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input required name="last_name" placeholder="Last Name" class="form-control" type="text">
+                                    <input required name="lastName" [(ngModel)]="model.lastName" placeholder="Last Name" class="form-control" type="text">
                                 </div>
                             </div>
                         </div>
@@ -41,7 +38,7 @@
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                    <input required name="email" placeholder="User Name" class="form-control" type="text">
+                                    <input required name="userName" [(ngModel)]="model.userName" placeholder="User Name" class="form-control" type="text">
                                 </div>
                             </div>
                         </div>
@@ -51,7 +48,7 @@
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                    <input name="phone" placeholder="Password" class="form-control" type="password">
+                                    <input name="password" [(ngModel)]="model.password" placeholder="Password" class="form-control" type="password">
                                 </div>
                         </div>
                         </div>
@@ -61,7 +58,7 @@
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                    <input name="address" placeholder="Confirm Password" class="form-control" type="password">
+                                    <input name="confirmPassword" [(ngModel)]="model.confirmPassword" placeholder="Confirm Password" class="form-control" type="password">
                                 </div>
                             </div>
                         </div>
@@ -71,7 +68,7 @@
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                    <input name="city" placeholder="city" class="form-control"  type="text">
+                                    <input name="role" [(ngModel)]="model.role" placeholder="city" class="form-control"  type="text">
                                 </div>
                             </div>
                         </div>
@@ -80,7 +77,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label"></label>
                             <div class="col-md-4">
-                                <button type="submit" class="btn btn-info" >Create User <span class="glyphicon glyphicon-send"></span></button>
+                                <button type="submit" class="btn btn-info">Create User <span class="glyphicon glyphicon-send"></span></button>
                             </div>
                         </div>
 
@@ -88,58 +85,7 @@
                         </form>
                         
                 
-                
-                
-                <!--<form action="" method="post" id="fileForm" role="form">
-                <fieldset><legend class="text-center">Valid information is required to register. <span class="req"><small> required *</small></span></legend>
-
-                <div class="form-group"> 	 
-                    <label for="firstname"><span class="req">* </span> First name: </label>
-                    <input class="form-control" type="text" name="firstname" placeholder="First Name" id="txtFirstName" required /> 
-                    <div id="errFirst"></div>    
-                </div>
-
-                <div class="form-group">
-                    <label for="lastname"><span class="req">* </span> Last name: </label> 
-                    <input class="form-control" type="text" name="lastname" id="txtLastName" placeholder="Last Name" required />  
-                    <div id="errLast"></div>
-                </div> 
-
-                <div class="form-group">
-                    <label for="username"><span class="req">* </span> User name:  <small>This will be your login user name</small> </label> 
-                    <input class="form-control" type="text" name="username" id="txtUserName" placeholder="User Name" required />  
-                    <div id="errLast"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="password"><span class="req">* </span> Password: </label>
-                    <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="txtPass1" placeholder="Password" /> 
-                
-                    <br>
-                    <label for="password"><span class="req">* </span> Password Confirm: </label>
-                    <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Confirm Password"  id="txtPass2" onkeyup="checkPass(); return false;" />
-                    <span id="confirmMessage" class="confirmMessage"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="role"><span class="req">* </span> Role: </label> 
-                        <select class="form-control" name="role" id="selRole">
-                            <option value="">Select</option>
-                            <option value="admin">Admin</option>
-                            <option value="trainer">Trainer</option>
-                            <option value="trainee">Trainee</option>
-                        </select>
-                        <div id="errLast"></div>
-                </div>
-
-                <div class="form-group">
-                    <input class="btn btn-info" (click)="validateUserDetails()" type="submit" name="submit_reg" value="Create User">
-                </div>
-
-                </fieldset>
-                </form>-->
-
-                </div>
+               </div>
             </div>
         </div>
     </div>
@@ -149,7 +95,7 @@
         <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-            <a data-toggle="collapse" href="#userDetailsCollapse">User Details</a>
+            <a data-toggle="collapse" (click) = "viewUsers()" href="#userDetailsCollapse">User Details</a>
             </h4>
         </div>
         <div id="userDetailsCollapse" class="panel-collapse collapse">
@@ -159,151 +105,29 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>User Name</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>User Name</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011/07/25</td>
-                            <td>$170,750</td>
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>66</td>
-                            <td>2009/01/12</td>
-                            <td>$86,000</td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>2012/03/29</td>
-                            <td>$433,060</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008/11/28</td>
-                            <td>$162,700</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                            <td>2012/12/02</td>
-                            <td>$372,000</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                            <td>2012/08/06</td>
-                            <td>$137,500</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                            <td>2010/10/14</td>
-                            <td>$327,900</td>
-                        </tr>
-                        <tr>
-                            <td>Colleen Hurst</td>
-                            <td>Javascript Developer</td>
-                            <td>San Francisco</td>
-                            <td>39</td>
-                            <td>2009/09/15</td>
-                            <td>$205,500</td>
-                        </tr>
-                        <tr>
-                            <td>Sonya Frost</td>
-                            <td>Software Engineer</td>
-                            <td>Edinburgh</td>
-                            <td>23</td>
-                            <td>2008/12/13</td>
-                            <td>$103,600</td>
-                        </tr>
-                        <tr>
-                            <td>Jena Gaines</td>
-                            <td>Office Manager</td>
-                            <td>London</td>
-                            <td>30</td>
-                            <td>2008/12/19</td>
-                            <td>$90,560</td>
-                        </tr>
-                        <tr>
-                            <td>Quinn Flynn</td>
-                            <td>Support Lead</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>2013/03/03</td>
-                            <td>$342,000</td>
-                        </tr>
-                        <tr>
-                            <td>Charde Marshall</td>
-                            <td>Regional Director</td>
-                            <td>San Francisco</td>
-                            <td>36</td>
-                            <td>2008/10/16</td>
-                            <td>$470,600</td>
-                        </tr>
-                        <tr>
-                            <td>Yuri Berry</td>
-                            <td>Chief Marketing Officer (CMO)</td>
-                            <td>New York</td>
-                            <td>40</td>
-                            <td>2009/06/25</td>
-                            <td>$675,000</td>
-                        </tr>
-                        <tr>
-                            <td>Caesar Vance</td>
-                            <td>Pre-Sales Support</td>
-                            <td>New York</td>
-                            <td>21</td>
-                            <td>2011/12/12</td>
-                            <td>$106,450</td>
-                        </tr>
-                        <tr>
-                            <td>Doris Wilder</td>
-                            <td>Sales Assistant</td>
-                            <td>Sidney</td>
-                            <td>23</td>
-                            <td>2010/09/20</td>
-                            <td>$85,600</td>
+                        <tr *ngFor="let user of users">
+                            <td>{{user.firstname+' '+user.lastname}}</td>
+                            <td>{{user.username}}</td>
+                            <td>{{user.role}}</td>
+                            <td *ngIf="user.isactive==1">Active</td>
+                            <td *ngIf="user.isactive!=1">InActive</td>
+                            <td><input type="button" value="De-activate" *ngIf="user.isactive==1" /> </td>
                         </tr>
                     </tbody>
                 </table>
@@ -313,3 +137,4 @@
     </div>
     </div>
 </div>
+

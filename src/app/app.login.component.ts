@@ -15,9 +15,11 @@ import { routes } from './services/app.router';
 
 export class LoginComponent implements OnInit{
     model: any = {};
-    authenticateFlag : any = {};
-    authenticateRole : any = {};
-    abc : any;
+    authenticateFlag : any;
+    authenticateRole : any;
+    authenticateName : any;
+    authenticateUserName: any;
+    
     private subject = new Subject<any>();
     //private router: Router;
     constructor(private loginService : LoginService, private router: Router ) {
@@ -32,6 +34,8 @@ export class LoginComponent implements OnInit{
 			data => { console.log(data);
                 this.authenticateFlag = data[0].isactive;
                 this.authenticateRole = data[0].role;
+                this.authenticateName = data[0].firstname;
+                this.authenticateUserName = data[0].username;
                 this.onSuccess();},
 			err => console.error(err),
 			() => console.log('success..')
@@ -43,8 +47,13 @@ export class LoginComponent implements OnInit{
         console.log("sasasasas" + this.authenticateFlag);
         if(this.authenticateFlag){
             console.log("sasasasas" + this.authenticateRole);
-            if(this.authenticateRole=="admin")                
+            if(this.authenticateRole=="admin") 
+            {
+                localStorage.setItem('currentUser', this.authenticateUserName);    
+                localStorage.setItem('currentUserName', this.authenticateName);           
+                localStorage.setItem('userRole', this.authenticateRole);                  
                 this.router.navigate(['/admin']);
+            }
             else if(this.authenticateRole=="trainer")
                 this.router.navigate(['/trainer']);
             else if(this.authenticateRole=="trainee")

@@ -17,8 +17,11 @@ router.get('/authenticate', function(req, res, next) {
     //res.send(JSON.stringify({ flag : true }));
     res.json( 
       
-      { "flag" : true, 
-       "role" : "trainer" }
+      { 
+        "flag" : true, 
+        "role" : "admin",
+        "firstName" : "Nikhil"  
+      }
     );
    // res.json({"foo": "bar"});
   //}

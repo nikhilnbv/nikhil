@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { LoginService } from '../services/loginService';
+
 import { Router } from '@angular/router';
 import { routes } from '../services/app.router';
 import { CreateUserComponent } from './createuser.component';
@@ -19,10 +20,12 @@ import  DynamicComponent  from '../app.dynamic.component';
 
 export class AdminComponent implements OnInit{
 
-    
+   
+    userName : any;    
     componentData = null;
 
-    constructor(private loginService : LoginService,private router: Router,private _elementRef : ElementRef) {
+    constructor(private loginService : LoginService, private router: Router,private _elementRef : ElementRef) {
+        this.userName = localStorage.getItem('currentUserName');
     }
 
     manageUserScreen(){
@@ -59,4 +62,6 @@ export class AdminComponent implements OnInit{
         this.loginService.logout();
         this.router.navigate(['/login']);
     }
+
+    
 }

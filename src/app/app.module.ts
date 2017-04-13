@@ -15,6 +15,8 @@ import { CreateTrainingComponent } from './admin/createTraining.component';
 import { TrainerComponent } from './trainer/app.trainer.component';
 import { TraineeComponent } from './trainee/app.trainee.component';
 import { LoginService } from './services/loginService';
+import { UserService } from './services/userService';
+
 import { routing }        from './services/app.router';
 import { AuthGuard } from './guard/authGuard';
 
@@ -30,7 +32,7 @@ import { AuthGuard } from './guard/authGuard';
     HttpModule, 
     routing
   ],
-  providers: [LoginService,AuthGuard],
+  providers: [LoginService,AuthGuard,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

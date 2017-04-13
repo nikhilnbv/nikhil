@@ -27,7 +27,8 @@ router.get('/', function(req, res, next) {
 router.get('/authenticate1',function(req, res, next){
     console.log("inside authenticate");
 
-    connection.query('select * from users where username = "'+ "Nikhil" +'"', function(err,result){
+    connection.query('select * from users where username = "'+ "Nikhil" +'"'
+    ,function(err,result){
         if(err) { 
             console.log(err);
         }
@@ -43,7 +44,52 @@ router.get('/authenticate1',function(req, res, next){
     });
 });
 
+router.post('/createUser',function(req, res, next){
+    console.log("inside createUser "+req.param('userName'));
+
+    connection.query(
+      'insert into users values ( "' 
+      + req.param("userName") + '","'
+      + req.param("password") + '","' 
+      + req.param("role") + '","' 
+      + req.param("firstName") + '","'  
+      + req.param("lastName")  + '",true)' 
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result + ' inserted');
+            res.send(result);
+            /*if(result[0].count>0){
+                console.log("true efdfdfdf");
+            }else{
+                console.log("false sdfsfsfsf");
+            }*/
+        }
+    });
+});
+
+router.get('/viewUsers',function(req, res, next){
+    console.log("inside viewUsers ");
+
+    connection.query(
+      'select * from users' 
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result + ' selected');
+            res.send(result);
+            /*if(result[0].count>0){
+                console.log("true efdfdfdf");
+            }else{
+                console.log("false sdfsfsfsf");
+            }*/
+        }
+    });
+});
+
 module.exports = users;
-
 module.exports = router;
-
